@@ -1,4 +1,3 @@
-#include "map_generation_node.h"
 //This code is to read the .bag files in ROS and decode them into .png and .pcd
 //Coordinate system transformation function is optional. 
 
