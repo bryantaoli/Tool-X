@@ -1,0 +1,1 @@
+在小米笔记本Ubuntu系统中运行 python3 turnkittire2tum.py
