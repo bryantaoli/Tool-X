@@ -21,9 +21,9 @@ function [ XYZ ] = BLHToNEDegall( BLH_deg )
         end
         if(i>1)
             aaaa=XYZToENU([X0;Y0;Z0],[XYZ(i,1);XYZ(i,2);XYZ(i,3)]);
-            XYZ(i,1)=aaaa(1);
-            XYZ(i,2)=aaaa(2);
-            XYZ(i,3)=aaaa(3);
+            XYZ(i,1) = aaaa(2);
+            XYZ(i,2) = aaaa(1);
+            XYZ(i,3) =-aaaa(3);
         end
     end
     

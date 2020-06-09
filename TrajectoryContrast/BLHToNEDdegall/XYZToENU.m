@@ -1,11 +1,8 @@
 function [ ENU ] = XYZToENU( XYZA1,XYZA2 )
-%XYZTOENU 此处显示有关此函数的摘要
-%   此处显示详细说明
-    %输入是XYZA1.XYZA2三维的列向量 输出ENU是以XYZA1站心的ENU坐标系
     BLHA2=XYZToBLHdirect(XYZA2);
     M=zeros(3,3);
-    M(1,1)=-sin(BLHA2(1));
-    M(1,2)=cos(BLHA2(1));
+    M(1,1)=-sin(BLHA2(2));
+    M(1,2)=cos(BLHA2(2));
     M(1,3)=0;
     M(2,1)=-sin(BLHA2(1))*cos(BLHA2(2));
     M(2,2)=-sin(BLHA2(1))*sin(BLHA2(2));
