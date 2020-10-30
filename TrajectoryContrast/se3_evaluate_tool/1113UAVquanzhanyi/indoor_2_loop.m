@@ -5,7 +5,14 @@ addpath('DATAS','FUNCTIONS');
 flag=0;
 mintake_off_stamp=0;
 minRMS=100;
-G1=importdata ('aft_mapped_to_init.txt');    % provided by EuRoC
+%%  改变加载文件的路径
+time=5;
+%融合导航定位结果路径
+sensor_path='C:\Users\79904\Desktop\1113UAVquanzhanyi\DATAS\aft_mapped_to_init.txt'; 
+%真值的路径
+ture_path='C:\Users\79904\Desktop\1113UAVquanzhanyi\DATAS\litao.txt';
+%%
+G1=importdata(sensor_path);    % provided by EuRoC
 aft_mappep_to_init1=G1.data;
 cell_aft_mappep_t1=G1.textdata(2:size(G1.textdata,1),1:1);
 aft_mapped_t1=zeros(size(cell_aft_mappep_t1,1),1);
@@ -16,7 +23,7 @@ GNGGA1(:,1)=aft_mappep_to_init1(:,1);
 GNGGA1(:,2)=aft_mappep_to_init1(:,2);
 GNGGA1(:,3)=aft_mappep_to_init1(:,3);
 est1=[aft_mapped_t1,GNGGA1];
-litao1=importdata('litao.txt',':');
+litao1=importdata(ture_path,':');
 litao_t_min_sec1=litao1.data(4:end,:);
 cell_es1=litao1.textdata(5:end,:);
 litao_xyz1=zeros(size(cell_es1,1),4);
@@ -32,8 +39,8 @@ end
 gt1=litao_xyz1;
 take_off_stamp1 = est1(1,1)-gt1(1,1);
 
-for take_off_stamp = -take_off_stamp1-1.8:0.1:-take_off_stamp1+2.5
-    G=importdata ('aft_mapped_to_init.txt');    % provided by EuRoC
+for take_off_stamp = -take_off_stamp1-time:0.1:-take_off_stamp1+time
+    G=importdata (sensor_path);    % provided by EuRoC
     aft_mappep_to_init=G.data;
     cell_aft_mappep_t=G.textdata(2:size(G.textdata,1),1:1);
     aft_mapped_t=zeros(size(cell_aft_mappep_t,1),1);
@@ -46,7 +53,7 @@ for take_off_stamp = -take_off_stamp1-1.8:0.1:-take_off_stamp1+2.5
     GNGGA(:,3)=aft_mappep_to_init(:,3)-0.09;
     est=[aft_mapped_t,GNGGA];
     
-    litao=importdata('litao.txt',':');
+    litao=importdata(ture_path,':');
     litao_t_min_sec=litao.data(4:end,:);
     cell_es=litao.textdata(5:end,:);
     litao_xyz=zeros(size(cell_es,1),4);
@@ -154,7 +161,7 @@ end
 
 if flag==0
     take_off_stamp=mintake_off_stamp;
-    G=importdata ('aft_mapped_to_init.txt');    % provided by EuRoC
+    G=importdata (sensor_path);    % provided by EuRoC
     aft_mappep_to_init=G.data;
     cell_aft_mappep_t=G.textdata(2:size(G.textdata,1),1:1);
     aft_mapped_t=zeros(size(cell_aft_mappep_t,1),1);
@@ -167,7 +174,7 @@ if flag==0
     GNGGA(:,3)=aft_mappep_to_init(:,3)-0.09;
     est=[aft_mapped_t,GNGGA];
     
-    litao=importdata('litao.txt',':');
+    litao=importdata(ture_path,':');
     litao_t_min_sec=litao.data(4:end,:);
     cell_es=litao.textdata(5:end,:);
     litao_xyz=zeros(size(cell_es,1),4);

@@ -5,7 +5,7 @@ addpath('DATAS','FUNCTIONS');
 flag=0;
 mintake_off_stamp=0;
 minRMS=100;
-G1=importdata ('aft_mapped_to_init.txt');    % provided by EuRoC
+G1=importdata ('huskyloam1.txt');    % provided by EuRoC
 aft_mappep_to_init1=G1.data;
 cell_aft_mappep_t1=G1.textdata(2:size(G1.textdata,1),1:1);
 aft_mapped_t1=zeros(size(cell_aft_mappep_t1,1),1);
@@ -18,7 +18,7 @@ GNGGA1(:,2)=aft_mappep_to_init1(:,2);
 GNGGA1(:,3)=aft_mappep_to_init1(:,3);
 
 est1=[aft_mapped_t1,GNGGA1];
-EST1=importdata ('litao.csv');
+EST1=importdata ('huskyrts1.csv');
 est_data1=EST1.data;
 cell_est_t1=EST1.textdata(2:size(EST1.textdata,1),1:1);
 est_t1=zeros(size(cell_est_t1,1),1);
@@ -31,7 +31,7 @@ take_off_stamp1 = est1(1,1)-gt1(1,1);
 
 for take_off_stamp = -take_off_stamp1-2.0:0.1:-take_off_stamp1+2.0
     
-    G=importdata ('aft_mapped_to_init.txt');    % provided by EuRoC
+    G=importdata ('huskyloam1.txt');    % provided by EuRoC
     aft_mappep_to_init=G.data;
     cell_aft_mappep_t=G.textdata(2:size(G.textdata,1),1:1);
     aft_mapped_t=zeros(size(cell_aft_mappep_t,1),1);
@@ -43,7 +43,7 @@ for take_off_stamp = -take_off_stamp1-2.0:0.1:-take_off_stamp1+2.0
     GNGGA(:,2)=aft_mappep_to_init(:,2);
     GNGGA(:,3)=aft_mappep_to_init(:,3);
     est=[aft_mapped_t,GNGGA];
-    litao=importdata ('litao.csv');
+    litao=importdata ('huskyrts1.csv');
     litao_data=litao.data;
     cell_est_t=litao.textdata(2:size(litao.textdata,1),1:1);
     litao_t=zeros(size(cell_est_t,1),1);
@@ -147,7 +147,7 @@ end
 
 if flag==0
     take_off_stamp=mintake_off_stamp;
-    G=importdata ('aft_mapped_to_init.txt');    % provided by EuRoC
+    G=importdata ('huskyloam1.txt');    % provided by EuRoC
     aft_mappep_to_init=G.data;
     cell_aft_mappep_t=G.textdata(2:size(G.textdata,1),1:1);
     aft_mapped_t=zeros(size(cell_aft_mappep_t,1),1);
@@ -159,7 +159,7 @@ if flag==0
     GNGGA(:,2)=aft_mappep_to_init(:,2);
     GNGGA(:,3)=aft_mappep_to_init(:,3);
     est=[aft_mapped_t,GNGGA];
-    litao=importdata ('litao.csv');
+    litao=importdata ('huskyrts1.csv');
     litao_data=litao.data;
     cell_est_t=litao.textdata(2:size(litao.textdata,1),1:1);
     litao_t=zeros(size(cell_est_t,1),1);
