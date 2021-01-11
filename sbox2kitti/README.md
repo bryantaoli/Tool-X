@@ -21,5 +21,6 @@
 3.rosrun obstacle_detection map_generate 
 
 4.rosbag play xx.bay -r 0.1
+
 ------------------------------------------------------------------------
 
